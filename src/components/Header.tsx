@@ -48,7 +48,9 @@ export const Header = () => {
             <img
               src={logoReduced}
               alt="Almena Arquitetura"
-              className="h-10 lg:h-12 w-auto"
+              className={`h-10 lg:h-12 w-auto transition-all duration-300 ${
+                isScrolled ? "" : "brightness-0 invert"
+              }`}
             />
           </a>
 
