@@ -61,7 +61,11 @@ export const Header = () => {
                 key={link.href}
                 href={link.href}
                 onClick={(e) => handleNavClick(e, link.href)}
-                className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors duration-200 tracking-wide"
+                className={`text-sm font-medium transition-colors duration-300 tracking-wide ${
+                  isScrolled
+                    ? "text-foreground/80 hover:text-primary"
+                    : "text-white hover:text-white/80"
+                }`}
               >
                 {link.label}
               </a>
