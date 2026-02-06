@@ -1,16 +1,16 @@
-import { Home, Paintbrush, PenTool, Users } from "lucide-react";
+import { Sofa, Building2, PenTool, Users, RefreshCw } from "lucide-react";
 import { useInView } from "@/hooks/useInView";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 
 const services = [
   {
-    icon: Paintbrush,
+    icon: Sofa,
     title: "Design de Interiores",
     description:
       "Projetos completos de decoração e ambientação, harmonizando cores, texturas e mobiliário para criar espaços únicos e funcionais.",
   },
   {
-    icon: Home,
+    icon: Building2,
     title: "Reformas Residenciais",
     description:
       "Acompanhamento completo de reformas, desde o planejamento até a execução, garantindo qualidade e cumprimento de prazos.",
@@ -26,6 +26,12 @@ const services = [
     title: "Consultoria Arquitetônica",
     description:
       "Orientação profissional para otimizar espaços, escolher materiais e tomar as melhores decisões para seu projeto.",
+  },
+  {
+    icon: RefreshCw,
+    title: "Retrofit de Fachadas",
+    description:
+      "Revitalização e modernização de fachadas de edifícios, com estudos de cores e materiais para valorizar o patrimônio.",
   },
 ];
 
@@ -56,7 +62,7 @@ export const ServicesSection = () => {
         </div>
 
         {/* Services Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 mb-16">
+        <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6 lg:gap-8 mb-16">
           {services.map((service, index) => (
             <div
               key={index}

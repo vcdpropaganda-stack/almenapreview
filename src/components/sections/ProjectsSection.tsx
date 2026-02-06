@@ -2,19 +2,19 @@ import { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useInView } from "@/hooks/useInView";
 
-import project1 from "@/assets/project-1.jpg";
-import project2 from "@/assets/project-2.jpg";
-import project3 from "@/assets/project-3.jpg";
-import project4 from "@/assets/project-4.jpg";
-import project5 from "@/assets/project-5.jpg";
+import projectQuartoValinhos from "@/assets/project-quarto-valinhos.png";
+import projectCozinhaRibeirao from "@/assets/project-cozinha-ribeirao.png";
+import projectGuaiases from "@/assets/project-guaiases.jpg";
+import projectQuintasVerde from "@/assets/project-quintas-verde.jpg";
+import projectCoberturaCampinas from "@/assets/project-cobertura-campinas.jpg";
 import project6 from "@/assets/project-6.jpg";
 
 const projects = [
-  { image: project1, title: "Suíte Master Contemporânea", category: "Design de Interiores" },
-  { image: project2, title: "Cozinha Gourmet Integrada", category: "Reforma Completa" },
-  { image: project3, title: "Banheiro Spa Premium", category: "Reforma Residencial" },
-  { image: project4, title: "Home Office Elegante", category: "Projeto Personalizado" },
-  { image: project5, title: "Sala de Jantar Sofisticada", category: "Design de Interiores" },
+  { image: projectQuartoValinhos, title: "Quarto Piacente - Valinhos", category: "Design de Interiores" },
+  { image: projectCozinhaRibeirao, title: "Cozinha Apartamento 242 - Ribeirão Preto", category: "Design de Interiores" },
+  { image: projectGuaiases, title: "Edifício Guaiases - Campinas", category: "Retrofit de Fachada" },
+  { image: projectQuintasVerde, title: "Condomínio Quintas do Verde - Campinas", category: "Retrofit de Fachada" },
+  { image: projectCoberturaCampinas, title: "Cobertura Centro de Campinas", category: "Em Andamento" },
   { image: project6, title: "Living Contemporâneo", category: "Projeto Completo" },
 ];
 

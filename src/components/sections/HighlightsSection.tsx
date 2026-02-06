@@ -1,24 +1,24 @@
-import { CheckCircle, Heart, Lightbulb, Shield } from "lucide-react";
+import { Check } from "lucide-react";
 import { useInView } from "@/hooks/useInView";
 
 const highlights = [
   {
-    icon: Heart,
+    icon: Check,
     title: "Atendimento Personalizado",
     description: "Cada projeto é único. Ouvimos suas necessidades e criamos soluções sob medida.",
   },
   {
-    icon: Lightbulb,
+    icon: Check,
     title: "Projetos Funcionais e Estéticos",
     description: "Unimos beleza e praticidade em cada ambiente que projetamos.",
   },
   {
-    icon: Shield,
+    icon: Check,
     title: "Acompanhamento Completo",
     description: "Do primeiro contato à entrega final, estamos ao seu lado em cada etapa.",
   },
   {
-    icon: CheckCircle,
+    icon: Check,
     title: "Foco em Conforto e Beleza",
     description: "Ambientes que encantam visualmente e proporcionam bem-estar no dia a dia.",
   },
