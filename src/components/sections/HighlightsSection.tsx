@@ -1,39 +1,19 @@
-import { Check } from "lucide-react";
+import { Check, ClipboardList, Fingerprint, ShieldCheck } from "lucide-react";
 import { useInView } from "@/hooks/useInView";
 
 const highlights = [
   {
-    icon: Check,
-    title: "Atendimento Personalizado",
-    description: "Cada projeto é único. Ouvimos suas necessidades e criamos soluções sob medida.",
-  },
-  {
-    icon: Check,
-    title: "Projetos Funcionais e Estéticos",
-    description: "Unimos beleza e praticidade em cada ambiente que projetamos.",
-  },
-  {
-    icon: Check,
-    title: "Acompanhamento Completo",
-    description: "Do primeiro contato à entrega final, estamos ao seu lado em cada etapa.",
-  },
-  {
-    icon: Check,
-    title: "Foco em Conforto e Beleza",
-    description: "Ambientes que encantam visualmente e proporcionam bem-estar no dia a dia.",
-  },
-  {
-    icon: Check,
+    icon: ClipboardList,
     title: "Processo Claro e Organizado",
     description: "Respeitamos prazos e etapas. Você saberá exatamente o andamento de cada fase do projeto, sem surpresas.",
   },
   {
-    icon: Check,
+    icon: Fingerprint,
     title: "Proposta Exclusiva e Autoral",
     description: "Seu projeto é desenvolvido do zero, traduzindo sua personalidade e necessidades em cada detalhe.",
   },
   {
-    icon: Check,
+    icon: ShieldCheck,
     title: "Tranquilidade e Segurança",
     description: "Antecipamos soluções técnicas para evitar imprevistos. Nosso foco é que sua experiência seja leve do início ao fim.",
   },
