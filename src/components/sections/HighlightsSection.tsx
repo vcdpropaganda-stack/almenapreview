@@ -22,6 +22,26 @@ const highlights = [
     title: "Foco em Conforto e Beleza",
     description: "Ambientes que encantam visualmente e proporcionam bem-estar no dia a dia.",
   },
+  {
+    icon: Check,
+    title: "Processo Claro e Organizado",
+    description: "Respeitamos prazos e etapas. Você saberá exatamente o andamento de cada fase do projeto, sem surpresas.",
+  },
+  {
+    icon: Check,
+    title: "Proposta Exclusiva e Autoral",
+    description: "Seu projeto é desenvolvido do zero, traduzindo sua personalidade e necessidades em cada detalhe.",
+  },
+  {
+    icon: Check,
+    title: "Tranquilidade e Segurança",
+    description: "Antecipamos soluções técnicas para evitar imprevistos. Nosso foco é que sua experiência seja leve do início ao fim.",
+  },
+  {
+    icon: Check,
+    title: "Imagens 3D Renderizadas",
+    description: "Visualize seu projeto antes da execução com renders realistas que trazem clareza e confiança na tomada de decisão.",
+  },
 ];
 
 export const HighlightsSection = () => {
