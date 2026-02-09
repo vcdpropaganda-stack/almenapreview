@@ -4,30 +4,55 @@ import { useInView } from "@/hooks/useInView";
 
 import projectQuartoValinhos from "@/assets/project-quarto-valinhos.png";
 import projectCozinhaRibeirao from "@/assets/project-cozinha-ribeirao.png";
+import projectCozinhaRibeirao02 from "@/assets/project-cozinha-ribeirao-02.png";
 import projectGuaiases from "@/assets/project-guaiases.jpg";
 import projectQuintasVerde from "@/assets/project-quintas-verde.jpg";
 import projectCoberturaCampinas from "@/assets/project-cobertura-campinas.jpg";
-import project6 from "@/assets/project-6.jpg";
+import projectReformaCongeia from "@/assets/project-reforma-congeia.png";
+
+type Category = "todos" | "finalizados" | "em-andamento" | "retrofits";
+
+const categories: { key: Category; label: string }[] = [
+  { key: "todos", label: "Todos" },
+  { key: "finalizados", label: "Projetos Finalizados" },
+  { key: "em-andamento", label: "Projetos em Andamento" },
+  { key: "retrofits", label: "Retrofits" },
+];
 
 const projects = [
-  { image: projectQuartoValinhos, title: "Quarto Piacente - Valinhos", category: "Design de Interiores" },
-  { image: projectCozinhaRibeirao, title: "Cozinha Apartamento 242 - Ribeirão Preto", category: "Design de Interiores" },
-  { image: projectGuaiases, title: "Edifício Guaiases - Campinas", category: "Retrofit de Fachada" },
-  { image: projectQuintasVerde, title: "Condomínio Quintas do Verde - Campinas", category: "Retrofit de Fachada" },
-  { image: projectCoberturaCampinas, title: "Cobertura Centro de Campinas", category: "Em Andamento" },
-  { image: project6, title: "Living Contemporâneo", category: "Projeto Completo" },
+  { image: projectQuartoValinhos, title: "Quarto Piacente - Valinhos", category: "finalizados" as Category },
+  { image: projectCozinhaRibeirao, title: "Cozinha Apartamento 242 - Ribeirão Preto", category: "finalizados" as Category },
+  { image: projectCozinhaRibeirao02, title: "Cozinha Apartamento 242 - Ribeirão Preto (Opção 02)", category: "finalizados" as Category },
+  { image: projectGuaiases, title: "Edifício Guaiases - Campinas", category: "retrofits" as Category },
+  { image: projectQuintasVerde, title: "Condomínio Quintas do Verde - Campinas", category: "retrofits" as Category },
+  { image: projectCoberturaCampinas, title: "Cobertura Centro de Campinas", category: "em-andamento" as Category },
+  { image: projectReformaCongeia, title: "Reforma Casa Congéia - Campinas", category: "em-andamento" as Category },
 ];
+
+const categoryLabels: Record<string, string> = {
+  finalizados: "Finalizado",
+  "em-andamento": "Em Andamento",
+  retrofits: "Retrofit",
+};
 
 export const ProjectsSection = () => {
   const { ref, isInView } = useInView();
+  const [activeCategory, setActiveCategory] = useState<Category>("todos");
   const [currentSlide, setCurrentSlide] = useState(0);
 
+  const filtered = activeCategory === "todos" ? projects : projects.filter((p) => p.category === activeCategory);
+
   const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % projects.length);
+    setCurrentSlide((prev) => (prev + 1) % filtered.length);
   };
 
   const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + projects.length) % projects.length);
+    setCurrentSlide((prev) => (prev - 1 + filtered.length) % filtered.length);
+  };
+
+  const handleCategoryChange = (cat: Category) => {
+    setActiveCategory(cat);
+    setCurrentSlide(0);
   };
 
   return (
@@ -36,7 +61,7 @@ export const ProjectsSection = () => {
         {/* Header */}
         <div
           ref={ref}
-          className={`text-center max-w-3xl mx-auto mb-16 transition-all duration-1000 ${
+          className={`text-center max-w-3xl mx-auto mb-12 transition-all duration-1000 ${
             isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
         >
@@ -53,11 +78,32 @@ export const ProjectsSection = () => {
           </p>
         </div>
 
+        {/* Category Filter */}
+        <div
+          className={`flex flex-wrap justify-center gap-3 mb-12 transition-all duration-1000 delay-200 ${
+            isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+          }`}
+        >
+          {categories.map((cat) => (
+            <button
+              key={cat.key}
+              onClick={() => handleCategoryChange(cat.key)}
+              className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 ${
+                activeCategory === cat.key
+                  ? "bg-primary text-primary-foreground shadow-md"
+                  : "bg-secondary text-muted-foreground hover:bg-secondary/80"
+              }`}
+            >
+              {cat.label}
+            </button>
+          ))}
+        </div>
+
         {/* Desktop Gallery Grid */}
         <div className="hidden lg:grid grid-cols-3 gap-6">
-          {projects.map((project, index) => (
+          {filtered.map((project, index) => (
             <div
-              key={index}
+              key={project.title}
               className={`group relative overflow-hidden rounded-xl aspect-[4/5] transition-all duration-700 ${
                 isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
               }`}
@@ -71,7 +117,7 @@ export const ProjectsSection = () => {
               <div className="absolute inset-0 bg-gradient-to-t from-foreground/80 via-foreground/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-full group-hover:translate-y-0 transition-transform duration-500">
                 <span className="text-off-white/70 text-sm uppercase tracking-wider">
-                  {project.category}
+                  {categoryLabels[project.category]}
                 </span>
                 <h3 className="font-display text-xl text-off-white mt-1">
                   {project.title}
@@ -88,8 +134,8 @@ export const ProjectsSection = () => {
               className="flex transition-transform duration-500"
               style={{ transform: `translateX(-${currentSlide * 100}%)` }}
             >
-              {projects.map((project, index) => (
-                <div key={index} className="w-full flex-shrink-0">
+              {filtered.map((project) => (
+                <div key={project.title} className="w-full flex-shrink-0">
                   <div className="relative aspect-[4/5]">
                     <img
                       src={project.image}
@@ -99,7 +145,7 @@ export const ProjectsSection = () => {
                     <div className="absolute inset-0 bg-gradient-to-t from-foreground/80 via-transparent to-transparent" />
                     <div className="absolute bottom-0 left-0 right-0 p-6">
                       <span className="text-off-white/70 text-sm uppercase tracking-wider">
-                        {project.category}
+                        {categoryLabels[project.category]}
                       </span>
                       <h3 className="font-display text-xl text-off-white mt-1">
                         {project.title}
@@ -112,34 +158,36 @@ export const ProjectsSection = () => {
           </div>
 
           {/* Navigation Buttons */}
-          <div className="flex items-center justify-center gap-4 mt-6">
-            <button
-              onClick={prevSlide}
-              className="w-12 h-12 rounded-full border border-border flex items-center justify-center hover:bg-secondary transition-colors"
-              aria-label="Previous project"
-            >
-              <ChevronLeft className="w-5 h-5" />
-            </button>
-            <div className="flex gap-2">
-              {projects.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => setCurrentSlide(index)}
-                  className={`w-2 h-2 rounded-full transition-all ${
-                    currentSlide === index ? "bg-primary w-6" : "bg-border"
-                  }`}
-                  aria-label={`Go to project ${index + 1}`}
-                />
-              ))}
+          {filtered.length > 1 && (
+            <div className="flex items-center justify-center gap-4 mt-6">
+              <button
+                onClick={prevSlide}
+                className="w-12 h-12 rounded-full border border-border flex items-center justify-center hover:bg-secondary transition-colors"
+                aria-label="Previous project"
+              >
+                <ChevronLeft className="w-5 h-5" />
+              </button>
+              <div className="flex gap-2">
+                {filtered.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentSlide(index)}
+                    className={`w-2 h-2 rounded-full transition-all ${
+                      currentSlide === index ? "bg-primary w-6" : "bg-border"
+                    }`}
+                    aria-label={`Go to project ${index + 1}`}
+                  />
+                ))}
+              </div>
+              <button
+                onClick={nextSlide}
+                className="w-12 h-12 rounded-full border border-border flex items-center justify-center hover:bg-secondary transition-colors"
+                aria-label="Next project"
+              >
+                <ChevronRight className="w-5 h-5" />
+              </button>
             </div>
-            <button
-              onClick={nextSlide}
-              className="w-12 h-12 rounded-full border border-border flex items-center justify-center hover:bg-secondary transition-colors"
-              aria-label="Next project"
-            >
-              <ChevronRight className="w-5 h-5" />
-            </button>
-          </div>
+          )}
         </div>
       </div>
     </section>
