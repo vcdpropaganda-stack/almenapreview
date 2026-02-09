@@ -37,9 +37,9 @@ export const AboutSection = () => {
           }`}
         >
           {/* Two Column Layout */}
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start mb-20">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center mb-20 max-w-5xl mx-auto">
             {/* Left Column - Architect Photo Placeholder */}
-            <div className="flex justify-center lg:justify-start">
+            <div className="flex justify-center lg:justify-end">
               <div className="w-64 h-80 lg:w-80 lg:h-96 bg-secondary/50 rounded-2xl flex flex-col items-center justify-center border-2 border-dashed border-primary/30">
                 <User className="w-16 h-16 text-primary/40 mb-4" />
                 <span className="text-muted-foreground text-sm text-center px-4">
