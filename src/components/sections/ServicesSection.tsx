@@ -1,37 +1,31 @@
-import { Sofa, Building2, PenTool, Users, RefreshCw } from "lucide-react";
+import { Armchair, Home, Building, Users } from "lucide-react";
 import { useInView } from "@/hooks/useInView";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 
 const services = [
   {
-    icon: Sofa,
+    icon: Armchair,
     title: "Design de Interiores",
     description:
       "Projetos completos de decoração e ambientação, harmonizando cores, texturas e mobiliário para criar espaços únicos e funcionais.",
   },
   {
-    icon: Building2,
-    title: "Reformas Residenciais",
+    icon: Home,
+    title: "Projeto de Arquitetura",
     description:
-      "Acompanhamento completo de reformas, desde o planejamento até a execução, garantindo qualidade e cumprimento de prazos.",
+      "Projetos arquitetônicos completos para construção ou reforma, desde o estudo preliminar até o detalhamento executivo, priorizando funcionalidade e estética.",
   },
   {
-    icon: PenTool,
-    title: "Projetos Personalizados",
+    icon: Building,
+    title: "Retrofit de Cores e Fachada",
     description:
-      "Desenvolvimento de projetos sob medida para casas e apartamentos, respeitando seu estilo e necessidades específicas.",
+      "Uma nova cara para o seu imóvel. Atualizamos fachadas residenciais ou comerciais que pararam no tempo, trazendo modernidade e impacto visual através de composições de cores, revestimentos e iluminação estratégica.",
   },
   {
     icon: Users,
-    title: "Consultoria Arquitetônica",
+    title: "Projeto Corporativo",
     description:
-      "Orientação profissional para otimizar espaços, escolher materiais e tomar as melhores decisões para seu projeto.",
-  },
-  {
-    icon: RefreshCw,
-    title: "Retrofit de Fachadas",
-    description:
-      "Revitalização e modernização de fachadas de edifícios, com estudos de cores e materiais para valorizar o patrimônio.",
+      "O espaço físico é o cartão de visitas da sua empresa. Criamos projetos comerciais que traduzem a essência da sua marca, gerando conexão imediata com seu público e um ambiente estimulante para seus colaboradores.",
   },
 ];
 
@@ -62,7 +56,7 @@ export const ServicesSection = () => {
         </div>
 
         {/* Services Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6 lg:gap-8 mb-16">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 mb-16">
           {services.map((service, index) => (
             <div
               key={index}
