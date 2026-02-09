@@ -6,7 +6,7 @@ interface WhatsAppButtonProps {
   className?: string;
 }
 
-const WHATSAPP_NUMBER = "5519999999999"; // Replace with actual number
+const WHATSAPP_NUMBER = "5519974076412";
 const WHATSAPP_MESSAGE = "Olá! Gostaria de saber mais sobre os serviços da Almena Arquitetura.";
 
 export const WhatsAppButton = ({
