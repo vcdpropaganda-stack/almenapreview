@@ -1,31 +1,41 @@
 import { useInView } from "@/hooks/useInView";
-import { User } from "lucide-react";
+import { User, Lightbulb, PencilRuler, Box, HardHat, ArrowRight } from "lucide-react";
+import { useState } from "react";
 
 const projectStages = [
   {
-    number: "1ª",
+    number: "01",
     title: "Criação",
     description: "Briefing com o Cliente.",
+    detail: "Ouvimos suas necessidades, desejos e estilo de vida para entender o projeto ideal.",
+    icon: Lightbulb,
   },
   {
-    number: "2ª",
+    number: "02",
     title: "Estudo Preliminar",
     description: "A ideia ganha forma. Apresentamos as primeiras plantas com opções de layout, definindo a circulação, os espaços e a funcionalidade.",
+    detail: "Plantas baixas, fluxos e primeiras definições de ambientes.",
+    icon: PencilRuler,
   },
   {
-    number: "3ª",
+    number: "03",
     title: "Anteprojeto",
     description: "Apresentação de layout e imagens 3D. Definimos materiais, revestimentos e acabamentos.",
+    detail: "Visualize seu projeto em 3D antes da execução.",
+    icon: Box,
   },
   {
-    number: "4ª",
+    number: "04",
     title: "Projeto Executivo",
     description: "Detalhamos tudo para a construção. É o 'manual de instruções' completo para que a equipe de obra execute tudo sem erros.",
+    detail: "Documentação técnica completa para execução perfeita.",
+    icon: HardHat,
   },
 ];
 
 export const AboutSection = () => {
   const { ref, isInView } = useInView();
+  const [activeStage, setActiveStage] = useState(0);
 
   return (
     <section id="sobre" className="py-20 lg:py-32 bg-background">
@@ -50,18 +60,13 @@ export const AboutSection = () => {
 
             {/* Right Column - About Text */}
             <div className="text-center lg:text-left">
-              {/* Section Label */}
               <span className="inline-block text-primary font-medium tracking-widest text-sm uppercase mb-4">
                 Sobre Nós
               </span>
-
-              {/* Title */}
               <h2 className="font-display text-3xl md:text-4xl lg:text-5xl text-foreground mb-8 leading-tight">
                 Criamos ambientes que contam a{" "}
                 <span className="italic text-primary">sua história</span>
               </h2>
-
-              {/* Description */}
               <div className="space-y-6 text-muted-foreground text-base lg:text-lg leading-relaxed">
                 <p>
                   A <strong className="text-foreground">Almena Arquitetura</strong>{" "}
@@ -86,9 +91,9 @@ export const AboutSection = () => {
             </div>
           </div>
 
-          {/* Project Stages Timeline */}
-          <div className="max-w-5xl mx-auto">
-            <div className="text-center mb-12">
+          {/* Project Stages - Interactive */}
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-16">
               <span className="inline-block text-primary font-medium tracking-widest text-sm uppercase mb-4">
                 Como Trabalhamos
               </span>
@@ -97,31 +102,152 @@ export const AboutSection = () => {
               </h3>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {projectStages.map((stage, index) => (
+            {/* Desktop: Interactive timeline */}
+            <div className="hidden md:block">
+              {/* Progress bar */}
+              <div className="relative mb-12">
+                <div className="h-0.5 bg-secondary w-full absolute top-5" />
                 <div
-                  key={index}
-                  className={`relative bg-secondary/30 rounded-xl p-6 transition-all duration-700 ${
-                    isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-                  }`}
-                  style={{ transitionDelay: `${index * 150}ms` }}
-                >
-                  <div className="flex items-center gap-3 mb-4">
-                    <span className="text-3xl font-display font-semibold text-primary">
-                      {stage.number}
-                    </span>
-                    <span className="text-xs uppercase tracking-wider text-muted-foreground">
-                      Etapa
-                    </span>
-                  </div>
-                  <h4 className="font-display text-lg text-foreground mb-2">
-                    {stage.title}
-                  </h4>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    {stage.description}
-                  </p>
+                  className="h-0.5 bg-primary absolute top-5 transition-all duration-700 ease-out"
+                  style={{ width: `${((activeStage) / (projectStages.length - 1)) * 100}%` }}
+                />
+                <div className="flex justify-between relative">
+                  {projectStages.map((stage, index) => {
+                    const Icon = stage.icon;
+                    const isActive = index === activeStage;
+                    const isPast = index < activeStage;
+                    return (
+                      <button
+                        key={index}
+                        onClick={() => setActiveStage(index)}
+                        className="flex flex-col items-center group cursor-pointer focus:outline-none"
+                      >
+                        <div
+                          className={`w-10 h-10 rounded-full flex items-center justify-center transition-all duration-500 ${
+                            isActive
+                              ? "bg-primary text-primary-foreground scale-125 shadow-lg"
+                              : isPast
+                              ? "bg-primary/80 text-primary-foreground"
+                              : "bg-secondary text-muted-foreground group-hover:bg-primary/20"
+                          }`}
+                        >
+                          <Icon className="w-4 h-4" />
+                        </div>
+                        <span
+                          className={`mt-3 text-sm font-medium transition-colors duration-300 ${
+                            isActive ? "text-primary" : "text-muted-foreground"
+                          }`}
+                        >
+                          {stage.title}
+                        </span>
+                      </button>
+                    );
+                  })}
                 </div>
-              ))}
+              </div>
+
+              {/* Active stage detail card */}
+              <div className="relative overflow-hidden rounded-2xl bg-secondary/30 border border-border/50 p-10 min-h-[200px]">
+                {projectStages.map((stage, index) => {
+                  const Icon = stage.icon;
+                  return (
+                    <div
+                      key={index}
+                      className={`transition-all duration-500 ${
+                        index === activeStage
+                          ? "opacity-100 translate-x-0"
+                          : "opacity-0 translate-x-8 absolute inset-0 p-10 pointer-events-none"
+                      }`}
+                    >
+                      <div className="flex items-start gap-8">
+                        <div className="shrink-0 w-20 h-20 rounded-2xl bg-primary/10 flex items-center justify-center">
+                          <Icon className="w-9 h-9 text-primary" />
+                        </div>
+                        <div className="flex-1">
+                          <div className="flex items-baseline gap-3 mb-3">
+                            <span className="text-5xl font-display font-bold text-primary/20">
+                              {stage.number}
+                            </span>
+                            <h4 className="font-display text-2xl text-foreground">
+                              {stage.title}
+                            </h4>
+                          </div>
+                          <p className="text-muted-foreground text-lg leading-relaxed max-w-2xl">
+                            {stage.description}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+
+                {/* Navigation arrows */}
+                <div className="absolute bottom-6 right-6 flex gap-2">
+                  <button
+                    onClick={() => setActiveStage(Math.max(0, activeStage - 1))}
+                    disabled={activeStage === 0}
+                    className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-primary transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+                  >
+                    <ArrowRight className="w-4 h-4 rotate-180" />
+                  </button>
+                  <button
+                    onClick={() => setActiveStage(Math.min(projectStages.length - 1, activeStage + 1))}
+                    disabled={activeStage === projectStages.length - 1}
+                    className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-primary transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+                  >
+                    <ArrowRight className="w-4 h-4" />
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            {/* Mobile: Swipeable cards */}
+            <div className="md:hidden space-y-4">
+              {projectStages.map((stage, index) => {
+                const Icon = stage.icon;
+                const isOpen = index === activeStage;
+                return (
+                  <button
+                    key={index}
+                    onClick={() => setActiveStage(isOpen ? -1 : index)}
+                    className={`w-full text-left rounded-xl border transition-all duration-500 ${
+                      isOpen
+                        ? "bg-secondary/50 border-primary/30 shadow-md"
+                        : "bg-secondary/20 border-border/30"
+                    }`}
+                  >
+                    <div className="flex items-center gap-4 p-5">
+                      <div
+                        className={`w-12 h-12 rounded-xl flex items-center justify-center shrink-0 transition-colors duration-300 ${
+                          isOpen ? "bg-primary text-primary-foreground" : "bg-secondary text-muted-foreground"
+                        }`}
+                      >
+                        <Icon className="w-5 h-5" />
+                      </div>
+                      <div className="flex-1">
+                        <span className="text-xs text-primary font-medium tracking-wider uppercase">
+                          Etapa {stage.number}
+                        </span>
+                        <h4 className="font-display text-lg text-foreground">{stage.title}</h4>
+                      </div>
+                      <ArrowRight
+                        className={`w-4 h-4 text-muted-foreground transition-transform duration-300 ${
+                          isOpen ? "rotate-90" : ""
+                        }`}
+                      />
+                    </div>
+                    <div
+                      className={`overflow-hidden transition-all duration-500 ${
+                        isOpen ? "max-h-40 opacity-100" : "max-h-0 opacity-0"
+                      }`}
+                    >
+                      <p className="px-5 pb-5 text-sm text-muted-foreground leading-relaxed">
+                        {stage.description}
+                      </p>
+                    </div>
+                  </button>
+                );
+              })}
             </div>
           </div>
         </div>
