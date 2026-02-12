@@ -226,3 +226,11 @@
 #lovable-badge {
   display: none !important;
 }
+
+/* Hide Elfsight branding */
+.elfsight-app-524cd1ce-fd26-4cf1-b062-5a5387bcd4b5 a[href*="elfsight"],
+.elfsight-app-524cd1ce-fd26-4cf1-b062-5a5387bcd4b5 [class*="branding"],
+.elfsight-app-524cd1ce-fd26-4cf1-b062-5a5387bcd4b5 [class*="copyright"],
+.elfsight-app-524cd1ce-fd26-4cf1-b062-5a5387bcd4b5 [class*="watermark"] {
+  display: none !important;
+}
