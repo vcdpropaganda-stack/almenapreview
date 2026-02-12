@@ -9,14 +9,18 @@ import projectGuaiases from "@/assets/project-guaiases.jpg";
 import projectQuintasVerde from "@/assets/project-quintas-verde.jpg";
 import projectCoberturaCampinas from "@/assets/project-cobertura-campinas.jpg";
 import projectReformaCongeia from "@/assets/project-reforma-congeia.png";
+import project3d01 from "@/assets/project-3d-01.png";
+import project3d02 from "@/assets/project-3d-02.png";
+import project3d03 from "@/assets/project-3d-03.png";
 
-type Category = "todos" | "finalizados" | "em-andamento" | "retrofits";
+type Category = "todos" | "finalizados" | "em-andamento" | "retrofits" | "projetos-3d";
 
 const categories: { key: Category; label: string }[] = [
   { key: "todos", label: "Todos" },
   { key: "finalizados", label: "Projetos Finalizados" },
   { key: "em-andamento", label: "Projetos em Andamento" },
   { key: "retrofits", label: "Retrofits" },
+  { key: "projetos-3d", label: "Projetos 3D" },
 ];
 
 const projects = [
@@ -27,12 +31,16 @@ const projects = [
   { image: projectQuintasVerde, title: "Condomínio Quintas do Verde - Campinas", category: "retrofits" as Category },
   { image: projectCoberturaCampinas, title: "Cobertura Centro de Campinas", category: "em-andamento" as Category },
   { image: projectReformaCongeia, title: "Reforma Casa Congéia - Campinas", category: "em-andamento" as Category },
+  { image: project3d01, title: "Museu do Sal - Fachada Principal", category: "projetos-3d" as Category },
+  { image: project3d02, title: "Museu do Sal - Vista Aérea", category: "projetos-3d" as Category },
+  { image: project3d03, title: "Museu do Sal - Interior", category: "projetos-3d" as Category },
 ];
 
 const categoryLabels: Record<string, string> = {
   finalizados: "Finalizado",
   "em-andamento": "Em Andamento",
   retrofits: "Retrofit",
+  "projetos-3d": "Projeto 3D",
 };
 
 export const ProjectsSection = () => {

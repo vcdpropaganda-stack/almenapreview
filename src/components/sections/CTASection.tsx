@@ -28,10 +28,10 @@ export const CTASection = () => {
 
           {/* CTA Button */}
           <a
-            href="https://wa.me/5519999999999?text=Olá! Gostaria de saber mais sobre os serviços da Almena Arquitetura."
+            href="https://wa.me/5519974076412?text=Olá! Gostaria de saber mais sobre os serviços da Almena Arquitetura."
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-3 bg-[#25D366] hover:bg-[#128C7E] text-white font-medium px-10 py-5 rounded-lg text-lg shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 hover:scale-105 group"
+            className="inline-flex items-center justify-center gap-3 bg-accent text-accent-foreground hover:bg-[#25D366] hover:text-white font-medium px-10 py-5 rounded-lg text-lg shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 hover:scale-105 group"
           >
             <FaWhatsapp className="w-7 h-7 transition-transform duration-300 group-hover:rotate-12 group-hover:scale-110" />
             Falar com a arquiteta no WhatsApp
