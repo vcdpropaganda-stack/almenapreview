@@ -18,9 +18,14 @@ export const Footer = () => {
           {/* Credits */}
           <p className="text-sm text-off-white/60">
             site desenvolvido por:{" "}
-            <span className="font-medium text-off-white/80">
+            <a
+              href="https://vocedigitalpropaganda.com.br/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-medium text-off-white/80 hover:text-off-white transition-colors underline underline-offset-2"
+            >
               VOCÊ DIGITAL PROPAGANDA
-            </span>
+            </a>
           </p>
 
           {/* Copyright */}
