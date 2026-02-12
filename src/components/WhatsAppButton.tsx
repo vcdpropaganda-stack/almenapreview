@@ -33,8 +33,8 @@ export const WhatsAppButton = ({
   const baseStyles = "inline-flex items-center justify-center gap-3 font-medium rounded-lg transition-all duration-300 text-center group";
   
   const variantStyles = {
-    primary: "bg-[#25D366] hover:bg-[#128C7E] text-white px-8 py-4 text-base lg:text-lg shadow-lg hover:shadow-2xl hover:-translate-y-1 hover:scale-105",
-    secondary: "bg-[#25D366] hover:bg-[#128C7E] text-white px-6 py-3 text-sm lg:text-base shadow-md hover:shadow-xl hover:-translate-y-0.5",
+    primary: "bg-accent text-accent-foreground hover:bg-[#25D366] hover:text-white px-8 py-4 text-base lg:text-lg shadow-lg hover:shadow-2xl hover:-translate-y-1 hover:scale-105",
+    secondary: "bg-accent text-accent-foreground hover:bg-[#25D366] hover:text-white px-6 py-3 text-sm lg:text-base shadow-md hover:shadow-xl hover:-translate-y-0.5",
   };
 
   return (
