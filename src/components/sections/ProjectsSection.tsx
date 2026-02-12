@@ -13,34 +13,33 @@ import project3d01 from "@/assets/project-3d-01.png";
 import project3d02 from "@/assets/project-3d-02.png";
 import project3d03 from "@/assets/project-3d-03.png";
 
-type Category = "todos" | "finalizados" | "em-andamento" | "retrofits" | "projetos-3d";
+type Category = "todos" | "finalizados" | "em-andamento" | "retrofits" | "institucional";
 
 const categories: { key: Category; label: string }[] = [
   { key: "todos", label: "Todos" },
   { key: "finalizados", label: "Projetos Finalizados" },
   { key: "em-andamento", label: "Projetos em Andamento" },
   { key: "retrofits", label: "Retrofits" },
-  { key: "projetos-3d", label: "Projetos 3D" },
+  { key: "institucional", label: "Projeto Institucional" },
 ];
 
 const projects = [
   { image: projectQuartoValinhos, title: "Quarto Piacente - Valinhos", category: "finalizados" as Category },
-  { image: projectCozinhaRibeirao, title: "Cozinha Apartamento 242 - Ribeirão Preto", category: "finalizados" as Category },
   { image: projectCozinhaRibeirao02, title: "Cozinha Apartamento 242 - Ribeirão Preto (Opção 02)", category: "finalizados" as Category },
   { image: projectGuaiases, title: "Edifício Guaiases - Campinas", category: "retrofits" as Category },
   { image: projectQuintasVerde, title: "Condomínio Quintas do Verde - Campinas", category: "retrofits" as Category },
   { image: projectCoberturaCampinas, title: "Cobertura Centro de Campinas", category: "em-andamento" as Category },
   { image: projectReformaCongeia, title: "Reforma Casa Congéia - Campinas", category: "em-andamento" as Category },
-  { image: project3d01, title: "Museu do Sal - Fachada Principal", category: "projetos-3d" as Category },
-  { image: project3d02, title: "Museu do Sal - Vista Aérea", category: "projetos-3d" as Category },
-  { image: project3d03, title: "Museu do Sal - Interior", category: "projetos-3d" as Category },
+  { image: project3d01, title: "Museu do Sal - Fachada Principal", category: "institucional" as Category },
+  { image: project3d02, title: "Museu do Sal - Vista Aérea", category: "institucional" as Category },
+  { image: project3d03, title: "Museu do Sal - Interior", category: "institucional" as Category },
 ];
 
 const categoryLabels: Record<string, string> = {
   finalizados: "Finalizado",
   "em-andamento": "Em Andamento",
   retrofits: "Retrofit",
-  "projetos-3d": "Projeto 3D",
+  institucional: "Projeto Institucional",
 };
 
 export const ProjectsSection = () => {
