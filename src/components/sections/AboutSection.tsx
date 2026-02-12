@@ -71,23 +71,19 @@ export const AboutSection = () => {
               </h2>
               <div className="space-y-6 text-muted-foreground text-base lg:text-lg leading-relaxed">
                 <p>
-                  A <strong className="text-foreground">Almena Arquitetura</strong>{" "}
-                  nasceu da paixão por transformar espaços em lares únicos e
-                  acolhedores. Com anos de experiência em design de interiores e
-                  reformas residenciais, nossa equipe se dedica a entender cada
-                  detalhe do seu estilo de vida para criar ambientes que refletem
-                  sua personalidade.
+                  Especialista em design de interiores e reformas residenciais em{" "}
+                  <strong className="text-foreground">Campinas e região</strong>, a{" "}
+                  <strong className="text-foreground">Almena Arquitetura</strong>{" "}
+                  transforma espaços em lares funcionais e sofisticados. Liderado
+                  pela arquiteta e urbanista <strong className="text-foreground">Gabriela Martins</strong>,
+                  formada pela PUC-Campinas, com extensão na Universidade do Porto
+                  e vencedora do <strong className="text-foreground">Prêmio Concretize 2023</strong>,
+                  o escritório une excelência técnica e sensibilidade estética.
                 </p>
                 <p>
-                  Acreditamos que cada projeto é uma oportunidade de unir
-                  funcionalidade e beleza, criando espaços que não apenas encantam
-                  visualmente, mas também proporcionam conforto e praticidade no dia
-                  a dia.
-                </p>
-                <p>
-                  Atendemos <strong className="text-foreground">Campinas</strong> e
-                  toda a região metropolitana, oferecendo um serviço personalizado
-                  do primeiro contato até a entrega final do projeto.
+                  Oferecemos soluções personalizadas do projeto inicial à entrega
+                  final, garantindo ambientes exclusivos que aliam conforto,
+                  praticidade e a sua personalidade em cada detalhe.
                 </p>
               </div>
             </div>
